@@ -27,7 +27,10 @@ const streamSlice = createSlice({
     filter: (state, action) => {
       const filterProgramType = state.stream.entries.filter(serie => serie.programType === action.payload)
       const filterForRelease = filterProgramType.filter(serie => serie.releaseYear >= 2010)
-      if(filterForRelease.length > 0) state[action.payload] = filterForRelease.slice(0, 20)
+      
+      if(filterForRelease.length > 0) {
+        state[action.payload] = filterForRelease.slice(0, 20)
+      }
       else {
         state.error = 'Oops, something went wrong...'
         state.movie = []

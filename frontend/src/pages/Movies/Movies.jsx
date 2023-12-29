@@ -1,6 +1,6 @@
+import React from 'react'
 import { useEffect,  useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import React from 'react'
 import { filter, setTitle } from '../../redux/slices/streamSlice.js'
 import { Popup } from '../../components/Popup/Popup.jsx'
 import { ListCardItem } from '../../components/ListItem/ListCardItem.jsx'
@@ -12,12 +12,8 @@ export const Movies = () => {
 
   const filterMovies = () => {
     setisLoading(true)
-    try {
-      dispatch(setTitle('Movies'))
-      dispatch(filter('move'))
-    } catch (error) {
-
-    }
+    dispatch(setTitle('Movies'))
+    dispatch(filter('movie'))
     setTimeout(() => {
       setisLoading(false)
     }, 1500);
@@ -33,13 +29,13 @@ export const Movies = () => {
   return (
     <section>
       <section className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7'>
-      {
-        movie.map(movie => (
-          <ListCardItem item={movie} />
-        ))
-      }
+        {
+          movie.map(movie => (
+            <ListCardItem key={movie?.title} item={movie} />
+          ))
+        }
        
-       { popUpInfoDetail && <Popup /> }      
+        { popUpInfoDetail && <Popup /> }      
       </section>
     </section>
   )
