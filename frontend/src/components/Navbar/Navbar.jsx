@@ -7,7 +7,7 @@ export const Navbar = () => {
   const { title } = useSelector(state => state.stream)
 
   return (
-    <section className='fixed top-0 w-full'>
+    <section className='w-full'>
       <nav className='bg-blue-500 w-full px-20'>
         <section className='flex flex-row items-center justify-between h-20 shadow-lg'>
           <header>
@@ -21,7 +21,7 @@ export const Navbar = () => {
           </section>
         </section>
       </nav>
-      <nav className='bg-gray-800 w-full px-20'>
+      <nav className='bg-gray-800 w-full drop-shadpw-md shadow-lg px-20'>
         <section className='flex flex-row items-center justify-between h-16'>
           <header>
             <h1 className="text-xl font-semibold text-white">

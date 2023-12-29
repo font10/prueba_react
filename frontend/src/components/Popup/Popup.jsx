@@ -11,10 +11,9 @@ export const Popup = () => {
     dispatch(changePopUp(false))
   }
 
-
   return (
     <article 
-      className='flex flex-col w-72 h-auto items-center gap-5 bg-gray-200 absolute top-[20%] left-[42%] rounded-md'
+      className='flex flex-col w-72 h-auto items-center gap-5 bg-gray-200 absolute top-[16%] left-[42%] rounded-md'
     >
       <IoMdCloseCircleOutline 
         className='absolute right-3 top-3 text-gray-400 hover:text-gray-300 cursor-pointer' 

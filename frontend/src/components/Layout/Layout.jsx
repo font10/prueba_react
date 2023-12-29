@@ -7,7 +7,7 @@ export const Layout = ({children}) => {
     <section className={'flex flex-row min-h-screen w-full'}>            
       <div className='flex flex-col w-full overflow-y-auto h-screen'>
         <Navbar />
-        <div className="flex-1 w-10/12 mx-auto mt-40 bg-white">
+        <div className="flex-1 w-10/12 mx-auto mt-10 bg-white">
           {children}
         </div>
         <Footer textColor='text-gray-900' />

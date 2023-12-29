@@ -1,44 +1,41 @@
 import { useEffect,  useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import React from 'react'
-import { setTitle } from '../../redux/slices/streamSlice.js'
-import { MoviesCardItem } from './MoviesCardItem.jsx'
+import { filter, setTitle } from '../../redux/slices/streamSlice.js'
 import { Popup } from '../../components/Popup/Popup.jsx'
+import { ListCardItem } from '../../components/ListItem/ListCardItem.jsx'
 
 export const Movies = () => {
   const dispatch = useDispatch()
   const [isLoading, setisLoading] = useState(false);
-  const [movies, setMovies] = useState([]);
-  const { stream, popUpInfoDetail } = useSelector(state => state.stream) 
+  const { movie, popUpInfoDetail, error } = useSelector(state => state.stream) 
 
   const filterMovies = () => {
-    setTimeout(() => {
+    setisLoading(true)
+    try {
       dispatch(setTitle('Movies'))
-      const filterProgramType = stream.entries.filter(serie => serie.programType === 'movie')
-      const filterForRelease = filterProgramType.filter(serie => serie.releaseYear >= 2010)
-      setMovies(filterForRelease)
-    }, 2000);
+      dispatch(filter('move'))
+    } catch (error) {
+
+    }
+    setTimeout(() => {
+      setisLoading(false)
+    }, 1500);
   }
   
   useEffect(() => {    
-    setisLoading(true)
     filterMovies()
-    setisLoading(false)
   }, []);
 
-  console.log(movies)
-  if(isLoading) return (
-    <div className='text-2xl font-bold text-blue-500'>
-      Hola
-    </div>
-  )
+  if(isLoading) return <h1 className='font-medium'>Loading...</h1>
+  if(error) return <h1 className='font-medium'>{error}</h1>
 
   return (
     <section>
       <section className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7'>
       {
-        movies.slice(0, 19).map(movie => (
-          <MoviesCardItem movie={movie} />
+        movie.map(movie => (
+          <ListCardItem item={movie} />
         ))
       }
        

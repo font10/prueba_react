@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { categories } from '../../utils/constants'
 import { CardItem } from './components/CardItem'
 import { useDispatch } from 'react-redux'
-import { setTitle } from '../../redux/slices/streamSlice'
+import { filter, setTitle } from '../../redux/slices/streamSlice'
 
 export const Home = () => {
   const dispatch = useDispatch()
 
   const changeTitle = () => {
     dispatch(setTitle('Titles'))
+    dispatch(filter('series'))
   }
 
   useEffect(() => {
