@@ -11,10 +11,14 @@ export const MoviesCardItem = ({movie}) => {
   }
 
   return (
-    <article key={movie?.title} className='my-10' onClick={handlePopUp}>
+    <article 
+      key={movie?.title} 
+      className='my-10 hover:shadow-xl mx-2 bg-gray-50 hover:border-2 hover:border-white hover:opacity-50 hover:transition-all hover:ease-in-out hover:duration-300' 
+      onClick={handlePopUp}
+    >
       <figure>
-        <img src={movie?.images['Poster Art']?.url} alt={movie?.title} className='w-40 cursor-pointer' />
-        <figcaption>{movie?.title}</figcaption>     
+        <img src={movie?.images['Poster Art']?.url} alt={movie?.title} className='cursor-pointer' />
+        <figcaption className='p-3'>{movie?.title}</figcaption>     
       </figure>
       {}
     </article>
