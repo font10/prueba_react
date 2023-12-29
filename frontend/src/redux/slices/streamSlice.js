@@ -30,6 +30,7 @@ const streamSlice = createSlice({
       
       if(filterForRelease.length > 0) {
         state[action.payload] = filterForRelease.slice(0, 20)
+        state.error = ''
       }
       else {
         state.error = 'Oops, something went wrong...'

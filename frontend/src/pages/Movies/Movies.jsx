@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { filter, setTitle } from '../../redux/slices/streamSlice.js'
 import { Popup } from '../../components/Popup/Popup.jsx'
 import { ListCardItem } from '../../components/ListItem/ListCardItem.jsx'
+import { Error } from '../../components/Error/Error.jsx'
+import { Loading } from '../../components/Loading/Loading.jsx'
 
 export const Movies = () => {
   const dispatch = useDispatch()
@@ -23,8 +25,8 @@ export const Movies = () => {
     filterMovies()
   }, []);
 
-  if(isLoading) return <h1 className='font-medium'>Loading...</h1>
-  if(error) return <h1 className='font-medium'>{error}</h1>
+  if(isLoading) return <Loading />
+  if(error !== '') return <Error />
 
   return (
     <section>

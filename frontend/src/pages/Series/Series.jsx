@@ -26,7 +26,7 @@ export const Series = () => {
   }, []);
 
   if(isLoading) return <Loading />
-  if(error) return <Error />
+  if(error !== '') return <Error />
 
   return (
     <section>
